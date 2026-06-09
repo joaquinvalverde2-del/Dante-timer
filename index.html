@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Dante Timer - Fase 3</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container"></div>
+    
+    <main class="app-container">
+        <!-- Top Section: Monthly Progress Bars -->
+        <header class="progress-section glass-panel">
+            <h2 class="section-title">BLOQUEO ESTIVAL - PROGRESO</h2>
+            <div class="bars-container">
+                <div class="month-box">
+                    <span class="month-label">JUNIO</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="bar-jun"></div>
+                    </div>
+                </div>
+                <div class="month-box">
+                    <span class="month-label">JULIO</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="bar-jul"></div>
+                    </div>
+                </div>
+                <div class="month-box">
+                    <span class="month-label">AGOSTO</span>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="bar-aug"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Middle Section: Global Countdown -->
+        <section class="global-timer-section glass-panel">
+            <h3 class="timer-subtitle">OBJETIVO: 1 SEP 2026</h3>
+            <div class="global-countdown" id="global-days">--</div>
+            <div class="global-label">DÍAS RESTANTES</div>
+        </section>
+
+        <!-- Bottom Section: Daily Survival Countdown -->
+        <section class="daily-timer-section glass-panel">
+            <h3 class="timer-subtitle">SUPERVIVENCIA DIARIA</h3>
+            <div class="daily-countdown" id="daily-time">--:--:--</div>
+            <div class="daily-label">PARA DESCONTAR UN DÍA</div>
+        </section>
+    </main>
+
+    <!-- Flash Effect Overlay -->
+    <div id="flash-overlay"></div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registrado con éxito.', reg))
+                    .catch(err => console.log('Fallo al registrar el Service Worker:', err));
+            });
+        }
+    </script>
+</body>
+</html>

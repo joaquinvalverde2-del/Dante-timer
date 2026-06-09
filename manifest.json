@@ -1,0 +1,21 @@
+{
+    "name": "Dante Timer",
+    "short_name": "Dante",
+    "description": "Fase 3 Survival Timer",
+    "start_url": "./index.html",
+    "display": "fullscreen",
+    "background_color": "#050505",
+    "theme_color": "#0a0a0a",
+    "icons": [
+        {
+            "src": "dante_bg.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "dante_bg.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

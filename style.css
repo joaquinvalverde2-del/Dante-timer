@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #050505;
+    color: #ffffff;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('dante_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    /* Start normal, then dim after 3s */
+    animation: dimBackground 1s ease-in-out 3s forwards;
+}
+
+@keyframes dimBackground {
+    from {
+        opacity: 1;
+        filter: none;
+    }
+    to {
+        opacity: 0.6;
+        filter: contrast(1.2) saturate(1.2);
+    }
+}
+
+.app-container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 400px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    /* Hide initially, fade in after 3s */
+    opacity: 0;
+    animation: fadeInUI 1s ease-in-out 3s forwards;
+}
+
+@keyframes fadeInUI {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #ff2a2a;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 42, 42, 0.5);
+}
+
+.timer-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #00e5ff;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+/* Monthly Progress Bars */
+.bars-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.month-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.month-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    width: 60px;
+    text-align: left;
+    color: #aaa;
+}
+
+.progress-bar-bg {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%; /* Dynamic via JS */
+    background: linear-gradient(90deg, #0088ff, #00e5ff);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+    transition: width 1s ease-in-out;
+}
+
+/* Global Timer */
+.global-timer-section {
+    flex-grow: 1;
+    justify-content: center;
+    border: 1px solid rgba(255, 42, 42, 0.3);
+    background: rgba(20, 0, 0, 0.6);
+}
+
+.global-countdown {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 42, 42, 0.8), 0 0 40px rgba(255, 42, 42, 0.4);
+    line-height: 1;
+    margin: 0.5rem 0;
+}
+
+.global-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #ffaa00;
+    text-transform: uppercase;
+}
+
+/* Daily Timer */
+.daily-timer-section {
+    justify-content: center;
+    padding: 1rem;
+}
+
+.daily-countdown {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00e5ff;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+    letter-spacing: 2px;
+}
+
+.daily-label {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
+}
+
+/* Flash effect for midnight */
+#flash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-out;
+}
+
+.flash-active {
+    opacity: 1 !important;
+    transition: opacity 0.1s ease-in !important;
+}

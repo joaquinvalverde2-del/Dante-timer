@@ -99,7 +99,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.4rem;
 }
 
 .month-box {

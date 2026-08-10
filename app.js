@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // End Date for Summer Block Phase 3
-    const END_DATE = new Date('2026-09-01T00:00:00').getTime();
+    // End Date for Block Phase
+    const END_DATE = new Date('2027-01-01T00:00:00').getTime();
 
     // DOM Elements
     const globalDaysEl = document.getElementById('global-days');
@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const barJun = document.getElementById('bar-jun');
     const barJul = document.getElementById('bar-jul');
     const barAug = document.getElementById('bar-aug');
+    const barSep = document.getElementById('bar-sep');
+    const barOct = document.getElementById('bar-oct');
+    const barNov = document.getElementById('bar-nov');
+    const barDec = document.getElementById('bar-dec');
     const flashOverlay = document.getElementById('flash-overlay');
 
     let lastDay = new Date().getDate();
@@ -101,6 +105,54 @@ document.addEventListener('DOMContentLoaded', () => {
             barAug.style.width = `${pct}%`;
         } else {
             barAug.style.width = '0%';
+        }
+
+        // September logic
+        if (month > 8 || year > 2026) {
+            barSep.style.width = '100%';
+            barSep.style.boxShadow = '0 0 15px rgba(0, 255, 0, 0.8)';
+            barSep.style.background = '#00ff00';
+        } else if (month === 8 && year === 2026) {
+            const pct = (date / 30) * 100;
+            barSep.style.width = `${pct}%`;
+        } else {
+            barSep.style.width = '0%';
+        }
+
+        // October logic
+        if (month > 9 || year > 2026) {
+            barOct.style.width = '100%';
+            barOct.style.boxShadow = '0 0 15px rgba(0, 255, 0, 0.8)';
+            barOct.style.background = '#00ff00';
+        } else if (month === 9 && year === 2026) {
+            const pct = (date / 31) * 100;
+            barOct.style.width = `${pct}%`;
+        } else {
+            barOct.style.width = '0%';
+        }
+
+        // November logic
+        if (month > 10 || year > 2026) {
+            barNov.style.width = '100%';
+            barNov.style.boxShadow = '0 0 15px rgba(0, 255, 0, 0.8)';
+            barNov.style.background = '#00ff00';
+        } else if (month === 10 && year === 2026) {
+            const pct = (date / 30) * 100;
+            barNov.style.width = `${pct}%`;
+        } else {
+            barNov.style.width = '0%';
+        }
+
+        // December logic
+        if (month > 11 || year > 2026) {
+            barDec.style.width = '100%';
+            barDec.style.boxShadow = '0 0 15px rgba(0, 255, 0, 0.8)';
+            barDec.style.background = '#00ff00';
+        } else if (month === 11 && year === 2026) {
+            const pct = (date / 31) * 100;
+            barDec.style.width = `${pct}%`;
+        } else {
+            barDec.style.width = '0%';
         }
     }
 
